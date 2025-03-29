@@ -1,4 +1,4 @@
-package client
+package emcequ_db
 
 import (
 	"database/sql"
