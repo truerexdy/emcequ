@@ -1,0 +1,102 @@
+:root{
+    --pri : #00ffdd;
+    --sec : #050505;
+    --ter : #f0f0f0;
+}
+
+.darkmode{
+    --pri : #00ffdd;
+    --sec : #f0f0f0;
+    --ter : #050505;
+}
+
+a{
+    color: var(--sec);
+    text-decoration: none;
+}
+
+#root{
+    width: 99vw;
+    height: 97vh;
+}
+
+#branding{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.1vw;
+    color: var(--pri);
+    background-color: var(--ter);
+    font-size: 1vw;
+}
+
+#startPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    color: var(--sec);
+    color: var(--ter);
+    height: 85%;
+    background-image : url('media/startPageBG.jpeg');
+    background-size: cover;
+}
+
+.button{
+    color: var(--pri);
+    background-color: var(--sec);
+    border: none;
+    border-radius: 10px;
+    width: 25%;
+    height: 25%;
+}
+
+.button:hover{
+    color: var(--sec);
+    background-color: var(--ter);
+}
+
+#questionPage{
+    width: 100%;
+    height: 95%;
+    color: var(--sec);
+    background-color: var(--ter);
+}
+
+#topBar{
+    color: var(--sec);
+    background-color: var(--ter);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 15%;
+    width: 100%;
+}
+
+#previousButton{
+
+}
+
+#nextButton{
+
+}
+
+#questionNumber{
+
+}
+
+#timer{
+    
+}
+
+#questionText{
+
+}
+
+#options{
+
+}
+
+#selectedOption{
+    
+}
