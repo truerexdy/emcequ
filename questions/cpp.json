@@ -1,0 +1,122 @@
+[
+    {
+      "q_text": "What is the purpose of the `virtual` keyword in C++?",
+      "options": [
+        "To make a function inline.",
+        "To allow a base class pointer to call the correct derived class method.",
+        "To declare a constant variable.",
+        "To define a static member function."
+      ],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "cpp1"
+    },
+    {
+      "q_text": "Which of the following is a valid way to declare a pointer to an integer in C++?",
+      "options": [
+        "int ptr;",
+        "int* ptr;",
+        "pointer int ptr;",
+        "ptr int*;"
+      ],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "cpp2"
+    },
+    {
+      "q_text": "What is the difference between `class` and `struct` in C++?",
+      "options": [
+        "There is no difference.",
+        "Members of a `class` are public by default, while members of a `struct` are private by default.",
+        "Members of a `struct` are public by default, while members of a `class` are private by default.",
+        "`class` can only contain member functions, while `struct` can only contain data members."
+      ],
+      "answer": 2,
+      "max_points": 10,
+      "q_id": "cpp3"
+    },
+    {
+      "q_text": "What does STL stand for in C++?",
+      "options": [
+        "Standard Template Library",
+        "Simple Type Language",
+        "Structured Text Language",
+        "System Tool Library"
+      ],
+      "answer": 0,
+      "max_points": 10,
+      "q_id": "cpp4"
+    },
+    {
+      "q_text": "Which of the following is an example of a container in the C++ STL?",
+      "options": [
+        "cout",
+        "cin",
+        "vector",
+        "main"
+      ],
+      "answer": 2,
+      "max_points": 10,
+      "q_id": "cpp5"
+    },
+    {
+      "q_text": "What is operator overloading in C++?",
+      "options": [
+        "Giving multiple meanings to an operator.",
+        "Changing the precedence of operators.",
+        "Creating new operators.",
+        "Removing the functionality of existing operators."
+      ],
+      "answer": 0,
+      "max_points": 10,
+      "q_id": "cpp6"
+    },
+    {
+      "q_text": "What is the purpose of a constructor in C++?",
+      "options": [
+        "To destroy objects.",
+        "To allocate memory for objects.",
+        "To initialize the data members of an object.",
+        "To define the interface of a class."
+      ],
+      "answer": 2,
+      "max_points": 10,
+      "q_id": "cpp7"
+    },
+    {
+      "q_text": "What is the difference between prefix and postfix increment operators (e.g., `++i` vs `i++`)?",
+      "options": [
+        "Prefix increments and returns the old value, postfix increments and returns the new value.",
+        "Postfix increments and returns the old value, prefix increments and returns the new value.",
+        "There is no difference in their behavior.",
+        "Prefix increment can only be used with integers, while postfix can be used with any numeric type."
+      ],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "cpp8"
+    },
+    {
+      "q_text": "What is the role of the `const` keyword when used with a member function?",
+      "options": [
+        "It makes the function return a constant value.",
+        "It prevents the function from modifying the object's member variables.",
+        "It makes the function callable only on constant objects.",
+        "Both b and c."
+      ],
+      "answer": 3,
+      "max_points": 10,
+      "q_id": "cpp9"
+    },
+    {
+      "q_text": "What is inheritance in C++?",
+      "options": [
+        "The ability of a class to derive properties and characteristics from another class.",
+        "A mechanism for hiding the implementation details of a class.",
+        "A way to manage memory allocation and deallocation.",
+        "A technique for improving the performance of C++ programs."
+      ],
+      "answer": 0,
+      "max_points": 10,
+      "q_id": "cpp10"
+    }
+  ]

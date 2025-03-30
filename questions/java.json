@@ -1,0 +1,107 @@
+[
+    {
+      "q_text": "What is the primary purpose of the Java Virtual Machine (JVM)?",
+      "options": [
+        "To compile Java code into machine code",
+        "To execute Java bytecode",
+        "To manage the operating system's resources",
+        "To provide a graphical user interface"
+      ],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "java1"
+    },
+    {
+      "q_text": "Which of the following is NOT a primitive data type in Java?",
+      "options": ["int", "boolean", "String", "char"],
+      "answer": 2,
+      "max_points": 10,
+      "q_id": "java2"
+    },
+    {
+      "q_text": "What is the keyword used to define a constant in Java?",
+      "options": ["const", "final", "static", "immutable"],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "java3"
+    },
+    {
+      "q_text": "What is the difference between `==` and `.equals()` in Java?",
+      "options": [
+        "`==` compares object references, `.equals()` compares object content",
+        "`==` compares object content, `.equals()` compares object references",
+        "There is no difference between them",
+        "`==` is used for primitive types, `.equals()` is used for all types"
+      ],
+      "answer": 0,
+      "max_points": 10,
+      "q_id": "java4"
+    },
+    {
+      "q_text": "Which of the following is a valid way to declare and initialize an array of integers in Java?",
+      "options": [
+        "int arr = new int[];",
+        "int[] arr = {1, 2, 3};",
+        "array arr = new array(3);",
+        "int arr[3] = {1, 2, 3};"
+      ],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "java5"
+    },
+    {
+      "q_text": "What is the concept of 'inheritance' in object-oriented programming?",
+      "options": [
+        "The ability of an object to change its class during runtime",
+        "The mechanism by which a class can acquire the properties and methods of another class",
+        "The process of hiding the implementation details of an object",
+        "The way objects interact with each other"
+      ],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "java6"
+    },
+    {
+      "q_text": "What is an 'interface' in Java?",
+      "options": [
+        "A class that cannot be instantiated",
+        "A blueprint of a class that specifies methods that a class must implement",
+        "A way to define constant values in Java",
+        "A mechanism for handling runtime errors"
+      ],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "java7"
+    },
+    {
+      "q_text": "Which keyword is used to handle exceptions in Java?",
+      "options": ["throw", "catch", "finally", "try"],
+      "answer": 3,
+      "max_points": 10,
+      "q_id": "java8"
+    },
+    {
+      "q_text": "What is the purpose of the `static` keyword in Java?",
+      "options": [
+        "To make a variable or method accessible only within its class",
+        "To indicate that a variable or method belongs to the class itself rather than to an instance of the class",
+        "To prevent a class from being subclassed",
+        "To define a method that can be overridden by subclasses"
+      ],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "java9"
+    },
+    {
+      "q_text": "What is the role of the `main` method in a Java application?",
+      "options": [
+        "It is the constructor of the class",
+        "It is the entry point for the execution of the program",
+        "It is used to define the class name",
+        "It is used to print output to the console"
+      ],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "java10"
+    }
+  ]

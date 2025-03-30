@@ -1,0 +1,87 @@
+[
+    {
+      "q_text": "What is the output of `print(2 + 3 * 4)`?",
+      "options": ["20", "14", "17", "19"],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "py1"
+    },
+    {
+      "q_text": "Which of the following is NOT a valid Python data type?",
+      "options": ["int", "float", "string", "character"],
+      "answer": 3,
+      "max_points": 10,
+      "q_id": "py2"
+    },
+    {
+      "q_text": "What is the purpose of the `len()` function in Python?",
+      "options": [
+        "To calculate the logarithm of a number",
+        "To find the length of a sequence (like a string or list)",
+        "To create a new list",
+        "To convert a string to lowercase"
+      ],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "py3"
+    },
+    {
+      "q_text": "How do you define a function in Python?",
+      "options": [
+        "fun myFunction():",
+        "function myFunction():",
+        "def myFunction():",
+        "define myFunction():"
+      ],
+      "answer": 2,
+      "max_points": 10,
+      "q_id": "py4"
+    },
+    {
+      "q_text": "What will be the output of `print(list(range(1, 5)))`?",
+      "options": ["[1, 2, 3, 4, 5]", "[1, 2, 3, 4]", "(1, 2, 3, 4)", "[0, 1, 2, 3, 4]"],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "py5"
+    },
+    {
+      "q_text": "Which of the following is used for single-line comments in Python?",
+      "options": ["//", "/* ... */", "#", "--"],
+      "answer": 2,
+      "max_points": 10,
+      "q_id": "py6"
+    },
+    {
+      "q_text": "What is the output of `'hello'.upper()`?",
+      "options": ["Hello", "hello", "HELLO", "HellO"],
+      "answer": 2,
+      "max_points": 10,
+      "q_id": "py7"
+    },
+    {
+      "q_text": "How do you access the element at index 2 of a list named `my_list`?",
+      "options": ["my_list[2]", "my_list(2)", "my_list.get(2)", "my_list{2}"],
+      "answer": 0,
+      "max_points": 10,
+      "q_id": "py8"
+    },
+    {
+      "q_text": "What is the purpose of the `if __name__ == '__main__':` block in Python?",
+      "options": [
+        "To define the main function of the script",
+        "To ensure that a block of code only runs when the script is executed directly (not when imported as a module)",
+        "To declare the name of the current module",
+        "It has no specific purpose and is just a convention"
+      ],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "py9"
+    },
+    {
+      "q_text": "Which of the following is used to open a file in write mode in Python?",
+      "options": ["open('file.txt', 'r')", "open('file.txt', 'w')", "open('file.txt', 'a')", "open('file.txt', 'x')"],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "py10"
+    }
+  ]

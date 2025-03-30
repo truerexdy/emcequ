@@ -90,13 +90,17 @@ a{
 }
 
 #questionText{
+    width: 100%;
+    padding: 5%;
 
 }
 
-#options{
-
+.options{
+    padding: 10%;
+    border: none;
 }
 
-#selectedOption{
-    
+.selectedOption{
+    color: var(--pri);
+    background-color: var(--sec);
 }
