@@ -1,3 +1,12 @@
+@font-face {
+    font-family: Jet;
+    src: url(media/JetBrainsMono-VariableFont_wght.ttf);
+}
+
+body{
+    font-family: "Jet";
+}
+
 :root{
     --pri : #00ffdd;
     --sec : #050505;
@@ -18,6 +27,7 @@ a{
 #root{
     width: 99vw;
     height: 97vh;
+    font-family: "Jet";
 }
 
 #branding{
@@ -43,6 +53,7 @@ a{
 }
 
 .button{
+    font-family: "Jet";
     color: var(--pri);
     background-color: var(--sec);
     border: none;
@@ -85,22 +96,41 @@ a{
 
 }
 
+.saveButton{
+    background-color: var(--ter);
+    padding: 1%;
+}
+
+.savedButton{
+    font-size: 1em;
+    border: none;
+    padding: 1%;
+    background-color: green;
+}
+
 #timer{
     
 }
 
 #questionText{
     width: 100%;
-    padding: 5%;
-
+    padding: 1%;
+    font-size: 2em;
 }
 
 .options{
-    padding: 10%;
+    padding: 1%;
+    font-size: 1.5em;
     border: none;
 }
 
 .selectedOption{
     color: var(--pri);
+    font-size: 1.5em;
     background-color: var(--sec);
+}
+
+#startLanguageSelector{
+    font-family: "Jet";
+    padding: 2%;
 }

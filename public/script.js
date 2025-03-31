@@ -14,7 +14,8 @@ const contentElement = document.getElementById("content");
 const availableLanguages = [
     { code: "py", name: "C++" },
     { code: "py", name: "Python" },
-    { code: "java", name: "Java" }
+    { code: "java", name: "Java" },
+    { code: "c", name: "C" }
 ];
 
 // Display the score card with results
@@ -153,10 +154,17 @@ function loadQuestion(number) {
         }
         selectedOption = null;
     }
+    // Reset save button appearance
+    const saveButtonElement = document.getElementById("saveButtonID");
+    saveButtonElement.className = "saveButton";
 }
 
 // Go to previous question
 function loadPreviousQuestion() {
+    const saveButtonElement = document.getElementById("saveButtonID");
+    saveButtonElement.className = "saveButton";
+
+
     if (questionNumber <= 1) {
         return;
     }
@@ -185,6 +193,9 @@ function submitAnswers() {
 
 // Go to next question
 function loadNextQuestion() {
+    const saveButtonElement = document.getElementById("saveButtonID");
+    saveButtonElement.className = "saveButton";
+
     const previousSelected = document.querySelector(".selectedOption");
     if (previousSelected) {
         previousSelected.className = "options";
@@ -223,12 +234,18 @@ function selectOption(ind) {
     if (currentElement) {
         currentElement.className = "selectedOption";
     }
+
+    const saveButtonElement = document.getElementById("saveButtonID");
+    saveButtonElement.className = "saveButton";
 }
 
 // Save the selected option for the current question
 function saveOption(num) {
     if (selectedOption !== null) {
         selectedOptionForQuestions[num-1] = selectedOption;
+        // Only change the button appearance after actually saving an option
+        const saveButtonElement = document.getElementById("saveButtonID");
+        saveButtonElement.className = "savedButton";
     }
 }
 
@@ -355,7 +372,7 @@ async function loadQuestionUI() {
 
     // Create option buttons
     for (let i = 0; i < 4; i++) {
-        const option = document.createElement("button");
+        let option = document.createElement("button");
         option.className = "options";
         option.type = "button";
         option.id = `option${i}`;
@@ -369,10 +386,11 @@ async function loadQuestionUI() {
     }
 
     // Create save button
-    const saveButtonElement = document.createElement("button");
-    saveButtonElement.id = "saveButton";
+    let saveButtonElement = document.createElement("button");
+    saveButtonElement.id = "saveButtonID";
+    saveButtonElement.className = "saveButton";
     saveButtonElement.type = "button";
-    saveButtonElement.innerText = "Save Answer";
+    saveButtonElement.innerText = "Save";
     saveButtonElement.addEventListener("click", () => {
         saveOption(questionNumber);
     });
