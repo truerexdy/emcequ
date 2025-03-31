@@ -1,122 +1,92 @@
 [
-    {
-      "q_text": "What is the purpose of the `virtual` keyword in C++?",
+  {
+      "q_text": "Identify the error in the following code #include <iostream> using namespace std; void fun() { } static int  x=5 x++;  cout << x << \" \";  int main() {  for (int   i=0  i<3 i++)  fun();  }  return 0;",
       "options": [
-        "To make a function inline.",
-        "To allow a base class pointer to call the correct derived class method.",
-        "To declare a constant variable.",
-        "To define a static member function."
+          "Compilation Error - Undefined behaviour",
+          "Logic Error - Unexpected output",
+          "No Error - Correct output",
+          "Run-time Error - Memory corruption"
       ],
-      "answer": 1,
+      "answer": 0,
       "max_points": 10,
       "q_id": "cpp1"
-    },
-    {
-      "q_text": "Which of the following is a valid way to declare a pointer to an integer in C++?",
+  },
+  {
+      "q_text": "#include <iostream> using namespace std; int main() {  }  unsigned int  x=0  x=x-1;  cout << x <<< endl;  return 0;",
       "options": [
-        "int ptr;",
-        "int* ptr;",
-        "pointer int ptr;",
-        "ptr int*;"
+          "No Error - Output will be 0",
+          "Logic Error - Unexpected large value due to underflow",
+          "Compilation Error - Cannot subtract from unsigned integer",
+          "Runtime Error - Causes undefined behaviour"
       ],
       "answer": 1,
       "max_points": 10,
       "q_id": "cpp2"
-    },
-    {
-      "q_text": "What is the difference between `class` and `struct` in C++?",
-      "options": [
-        "There is no difference.",
-        "Members of a `class` are public by default, while members of a `struct` are private by default.",
-        "Members of a `struct` are public by default, while members of a `class` are private by default.",
-        "`class` can only contain member functions, while `struct` can only contain data members."
-      ],
-      "answer": 2,
-      "max_points": 10,
-      "q_id": "cpp3"
-    },
-    {
-      "q_text": "What does STL stand for in C++?",
-      "options": [
-        "Standard Template Library",
-        "Simple Type Language",
-        "Structured Text Language",
-        "System Tool Library"
-      ],
-      "answer": 0,
-      "max_points": 10,
-      "q_id": "cpp4"
-    },
-    {
-      "q_text": "Which of the following is an example of a container in the C++ STL?",
-      "options": [
-        "cout",
-        "cin",
-        "vector",
-        "main"
-      ],
-      "answer": 2,
-      "max_points": 10,
-      "q_id": "cpp5"
-    },
-    {
-      "q_text": "What is operator overloading in C++?",
-      "options": [
-        "Giving multiple meanings to an operator.",
-        "Changing the precedence of operators.",
-        "Creating new operators.",
-        "Removing the functionality of existing operators."
-      ],
-      "answer": 0,
-      "max_points": 10,
-      "q_id": "cpp6"
-    },
-    {
-      "q_text": "What is the purpose of a constructor in C++?",
-      "options": [
-        "To destroy objects.",
-        "To allocate memory for objects.",
-        "To initialize the data members of an object.",
-        "To define the interface of a class."
-      ],
-      "answer": 2,
-      "max_points": 10,
-      "q_id": "cpp7"
-    },
-    {
-      "q_text": "What is the difference between prefix and postfix increment operators (e.g., `++i` vs `i++`)?",
-      "options": [
-        "Prefix increments and returns the old value, postfix increments and returns the new value.",
-        "Postfix increments and returns the old value, prefix increments and returns the new value.",
-        "There is no difference in their behavior.",
-        "Prefix increment can only be used with integers, while postfix can be used with any numeric type."
-      ],
+  },
+  {
+      "q_text": "What will be the output of the following code? #include <iostream> using namespace std; int main() {  }  char ch ='A';  int num =ch+1  cout << num;  return 0;",
+      "options": ["65", "66", "'B'", "Compilation Error"],
       "answer": 1,
       "max_points": 10,
-      "q_id": "cpp8"
-    },
-    {
-      "q_text": "What is the role of the `const` keyword when used with a member function?",
+      "q_id": "cpp3"
+  },
+  {
+      "q_text": "#include <iostream> #include <climits> using namespace std; int main() {  }  int a= INT_MIN; int b=-1  cout << ( a/b)  return 0;",
+      "options": ["2147483648", "-2147483648", "2147483647", "Compilation Error"],
+      "answer": 3,
+      "max_points": 10,
+      "q_id": "cpp4"
+  },
+  {
+      "q_text": "#include <iostream> #include <fstream> using namespace std; int main() {  }  ifstream fp;  char buffer[50];  fp >> buffer; // Similar to fscanf  cout << buffer;  fp.close();  return 0;",
       "options": [
-        "It makes the function return a constant value.",
-        "It prevents the function from modifying the object's member variables.",
-        "It makes the function callable only on constant objects.",
-        "Both b and c."
+          "fp.open(\"file.txt\");",
+          "Check if fp.is_open() before reading.",
+          "Use fp.getline(buffer, 50); instead of >>.",
+          "All of the above"
       ],
       "answer": 3,
       "max_points": 10,
-      "q_id": "cpp9"
-    },
-    {
-      "q_text": "What is inheritance in C++?",
+      "q_id": "cpp5"
+  },
+  {
+      "q_text": "#include <iostream> using namespace std; void recursive Function() {  }  int  x=5  recursive Function();  int main() {  }  recursive Function();  return 0;",
+      "options": ["Infinite loop", "Segmentation fault (Stack overflow)", "Prints 5 infinitely", "Compilation error"],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "cpp6"
+  },
+  {
+      "q_text": "#include <iostream> using namespace std; int main() { int arr[5] ={1,2,3,4,5}; for (int i=0; i<=5;i++) { cout << arr[i]<<\";\" } } return 0;",
       "options": [
-        "The ability of a class to derive properties and characteristics from another class.",
-        "A mechanism for hiding the implementation details of a class.",
-        "A way to manage memory allocation and deallocation.",
-        "A technique for improving the performance of C++ programs."
+          "Prints 1 2 3 4 5 then crashes (Undefined Behavior)",
+          "Prints 1 2 3 4 5 0 without errors",
+          "Infinite loop",
+          "Compilation error"
       ],
       "answer": 0,
       "max_points": 10,
+      "q_id": "cpp7"
+  },
+  {
+      "q_text": "#include <iostream> using namespace std; int main() {  }  float x=0.1f;  if ( x==0.1f)  cout << \"Equal\";  else  cout << \"Not Equal\";  return 0;",
+      "options": ["Equal", "Not Equal", "Compilation error", "Undefined behaviour"],
+      "answer": 1,
+      "max_points": 10,
+      "q_id": "cpp8"
+  },
+  {
+      "q_text": "#include <iostream> using namespace std; int main() {  }  int x=5  cout << x << \" \" << x++ << \" \" << ++x;  return 0;",
+      "options": ["5 5 7", "5 6 7", "7 6 7", "Undefined behaviour"],
+      "answer": 3,
+      "max_points": 10,
+      "q_id": "cpp9"
+  },
+  {
+      "q_text": "#include <iostream> using namespace std; int main() { if (1)  else  cout << \"Else block executed\\n\";  cout << \"Code continues...\\n\";  return 0; }",
+      "options": ["Code continues...", "Else block executed", "Compilation error", "No output"],
+      "answer": 0,
+      "max_points": 10,
       "q_id": "cpp10"
-    }
-  ]
+  }
+]

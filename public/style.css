@@ -5,6 +5,8 @@
 
 body{
     font-family: "Jet";
+    height: 97vh;
+    width: 98vw;
 }
 
 :root{
@@ -25,8 +27,7 @@ a{
 }
 
 #root{
-    width: 99vw;
-    height: 97vh;
+    height: 100%;
     font-family: "Jet";
 }
 
@@ -34,7 +35,6 @@ a{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 0.1vw;
     color: var(--pri);
     background-color: var(--ter);
     font-size: 1vw;
@@ -119,12 +119,15 @@ a{
 }
 
 .options{
+    font-family: "Jet";
     padding: 1%;
     font-size: 1.5em;
     border: none;
 }
 
 .selectedOption{
+    font-family: "Jet";
+    border-radius: 10px;
     color: var(--pri);
     font-size: 1.5em;
     background-color: var(--sec);
