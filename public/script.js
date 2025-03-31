@@ -2,8 +2,8 @@ const maxQuestion = 2;
 let questionNumber = 0;
 const maxTime = 600;
 let questionListObject;
-let currentLanguage = "cpp"; // Default language
-
+let currentLanguage = "cpp";
+let teamId = null;
 let selectedOption = 0;
 let selectedOptionForQuestions = Array(maxQuestion).fill(null);
 
@@ -19,7 +19,7 @@ const availableLanguages = [
 ];
 
 // Display the score card with results
-function scoreCard() {
+async function scoreCard() {
     contentElement.innerHTML = "";
     contentElement.id = "scoreCardPage";
 
@@ -49,10 +49,36 @@ function scoreCard() {
 
     console.log(`Total Score = ${totalPoints}`);
     console.log(`Total Correct answers = ${totalCorrect}`);
+    
+    // Send the score to the backend
+    try {
+        const response = await fetch('/score', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                TeamID: teamId,
+                TotalScore: totalPoints
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        console.log('Score submitted successfully');
+    } catch (error) {
+        console.error('Error submitting score:', error);
+    }
+
     const summary = document.createElement("div");
     summary.className = "score-summary";
     summary.innerHTML = `
         <h2>Test Completed</h2>
+        <p>Your score has been recorded: ${totalPoints} points out of ${maxPossiblePoints}</p>
+        <p>You answered ${totalCorrect} out of ${maxQuestion} questions correctly.</p>
+        <p>Team ID: ${teamId}</p>
         <p>Contact your co-ordinator to record your result.</p>
         <p>Hands off the keyboard and mouse.</p>
     `;
@@ -278,9 +304,85 @@ async function loadQuestionData() {
 }
 
 // Load question UI
+async function getTeamId() {
+    try {
+        console.log("Requesting team ID from server...");
+        const response = await fetch('/score', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const responseText = await response.text();
+        console.log("Raw response:", responseText);
+        
+        let data;
+        try {
+            data = JSON.parse(responseText);
+        } catch (parseError) {
+            console.error("Failed to parse JSON response:", parseError);
+            throw new Error("Invalid JSON response from server");
+        }
+        
+        console.log("Parsed response data:", data);
+        
+        // Check response structure and extract TeamID
+        if (data && typeof data === 'object') {
+            if ('TeamID' in data) {
+                teamId = data.TeamID;
+                console.log(`Team ID assigned: ${teamId}`);
+                return teamId;
+            } else {
+                // Try lowercase property name as fallback (in case of JSON serialization differences)
+                if ('teamID' in data) {
+                    teamId = data.teamID;
+                    console.log(`Team ID assigned (from teamID): ${teamId}`);
+                    return teamId;
+                } else if ('team_id' in data) {
+                    teamId = data.team_id;
+                    console.log(`Team ID assigned (from team_id): ${teamId}`);
+                    return teamId;
+                } else if ('teamId' in data) {
+                    teamId = data.teamId;
+                    console.log(`Team ID assigned (from teamId): ${teamId}`);
+                    return teamId;
+                }
+            }
+        }
+        
+        console.error("Could not find TeamID in response:", data);
+        throw new Error("TeamID not found in response");
+    } catch (error) {
+        console.error('Error getting team ID:', error);
+        return null;
+    }
+}
+
+// Modify the loadQuestionUI function to get the team ID and display it
 async function loadQuestionUI() {
     // Reset question number
     questionNumber = 0;
+
+    // Get the team ID first
+    try {
+        await getTeamId();
+        if (!teamId) {
+            console.error("Failed to get a valid team ID");
+            // Create a fallback ID for testing if needed
+            teamId = Math.floor(Math.random() * 10000) + 1;
+            console.log(`Created fallback team ID: ${teamId}`);
+        }
+    } catch (error) {
+        console.error("Error in team ID initialization:", error);
+        // Create a fallback ID for testing if needed
+        teamId = Math.floor(Math.random() * 10000) + 1;
+        console.log(`Created fallback team ID after error: ${teamId}`);
+    }
 
     // Load questions from API
     await loadQuestionData();
@@ -288,40 +390,13 @@ async function loadQuestionUI() {
     // Clear content
     contentElement.innerHTML = "";
     contentElement.id = "questionPage";
-
-    // **REMOVE THIS SECTION:**
-    // // Create language selector
-    // const languageSelectorContainer = document.createElement("div");
-    // languageSelectorContainer.id = "languageSelectorContainer";
-
-    // const languageLabel = document.createElement("label");
-    // languageLabel.htmlFor = "languageSelector";
-    // languageLabel.innerText = "Select Language: ";
-
-    // const languageSelector = document.createElement("select");
-    // languageSelector.id = "languageSelector";
-
-    // availableLanguages.forEach(lang => {
-    //     const option = document.createElement("option");
-    //     option.value = lang.code;
-    //     option.innerText = lang.name;
-    //     if (lang.code === currentLanguage) {
-    //         option.selected = true;
-    //     }
-    //     languageSelector.appendChild(option);
-    // });
-
-    // languageSelector.addEventListener("change", changeLanguage);
-
-    // languageSelectorContainer.appendChild(languageLabel);
-    // languageSelectorContainer.appendChild(languageSelector);
-    // contentElement.appendChild(languageSelectorContainer);
-
+    
     // Create top bar with navigation and timer
     const topBarElement = document.createElement("div");
     const previousButtonElement = document.createElement("button");
     const questionNumberElement = document.createElement("p");
     const timerElement = document.createElement("p");
+    const teamIdElement = document.createElement("p"); // Element for team ID
     const nextButtonElement = document.createElement("button");
 
     topBarElement.id = "topBar";
@@ -329,15 +404,18 @@ async function loadQuestionUI() {
     nextButtonElement.id = "nextButton";
     questionNumberElement.id = "questionNumber";
     timerElement.id = "timer";
+    teamIdElement.id = "teamIdDisplay";
 
     previousButtonElement.innerText = "Previous Question";
     nextButtonElement.innerText = "Next Question";
     questionNumberElement.innerText = "1"; // Start with question 1
+    teamIdElement.innerText = `Team ID: ${teamId}`; // Display the team ID
 
     contentElement.appendChild(topBarElement);
     topBarElement.appendChild(previousButtonElement);
     topBarElement.appendChild(questionNumberElement);
     topBarElement.appendChild(timerElement);
+    topBarElement.appendChild(teamIdElement); // Add team ID display
     topBarElement.appendChild(nextButtonElement);
 
     previousButtonElement.addEventListener("click", loadPreviousQuestion);
@@ -386,6 +464,7 @@ async function loadQuestionUI() {
     questionNumber = 1;
     loadQuestion(1);
 }
+
 
 function startPage() {
     questionNumber = 0;
