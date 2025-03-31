@@ -47,14 +47,14 @@ function scoreCard() {
         maxPossiblePoints += question.max_points;
     }
 
+    console.log(`Total Score = ${totalPoints}`);
+    console.log(`Total Correct answers = ${totalCorrect}`);
     const summary = document.createElement("div");
     summary.className = "score-summary";
     summary.innerHTML = `
-        <h2>Summary</h2>
-        <p>Questions answered correctly: ${totalCorrect} out of ${Math.min(questionListObject.length, maxQuestion)}</p>
-        <p>Total points: ${totalPoints} out of ${maxPossiblePoints}</p>
-        <p>Score percentage: ${Math.round((totalPoints / maxPossiblePoints) * 100)}%</p>
-        <p>Language: ${getLanguageName(currentLanguage)}</p>
+        <h2>Test Completed</h2>
+        <p>Contact your co-ordinator to record your result.</p>
+        <p>Hands off the keyboard and mouse.</p>
     `;
 
     const restartButton = document.createElement("button");
