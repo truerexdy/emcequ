@@ -1,92 +1,93 @@
 [
-  {
-      "q_text": "Identify the Error in the Following Code def fun():  x=5 # Not static, reinitialized every call  x+=1  print(x, end=\" \")  for i in range(3):  fun()",
-      "options": [
-          "Compilation Error",
-          "Prints 6 6 6 (no static persistence)",
-          "Prints 6 7 8",
-          "Runtime Error"
-      ],
-      "answer": 1,
-      "max_points": 10,
-      "q_id": "python1"
-  },
-  {
-      "q_text": "x=0  x=x-1  print(x)",
-      "options": [
-          "0",
-          "-1 (no underflow, normal negative numbers)",
-          "4294967295 (like C unsigned underflow)",
-          "Runtime Error"
-      ],
-      "answer": 1,
-      "max_points": 10,
-      "q_id": "python2"
-  },
-  {
-      "q_text": "What Will Be the Output?  ch ='A'  num=ord(ch)+1 #'ord()' gets ASCII value print(num)",
-      "options": ["65", "66", "'B'", "TypeError"],
-      "answer": 1,
-      "max_points": 10,
-      "q_id": "python3"
-  },
-  {
-      "q_text": "a=-2147483648 # Simulating 32-bit INT_MIN b=-1  print(a // b) # Integer division in Python",
-      "options": ["2147483648", "-2147483648", "2147483647", "OverflowError"],
-      "answer": 0,
-      "max_points": 10,
-      "q_id": "python4"
-  },
-  {
-      "q_text": "try:  fp = open(\"file.txt\", \"r\")  buffer = fp.read(50) # Reads first 50 bytes  print(buffer)  fp.close()  except FileNotFoundError:  print(\"File not found!\")",
-      "options": [
-          "Missing fp = open(\"file.txt\", \"r\")",
-          "Check if file exists with os.path.exists()",
-          "Use fp.readline() instead of read(50)",
-          "All of the above"
-      ],
-      "answer": 3,
-      "max_points": 10,
-      "q_id": "python5"
-  },
-  {
-      "q_text": "def recursive_function():  x=5  recursive_function()  recursive_function()",
-      "options": ["Infinite loop", "RecursionError (stack overflow)", "Prints 5 infinitely", "SyntaxError"],
-      "answer": 1,
-      "max_points": 10,
-      "q_id": "python6"
-  },
-  {
-      "q_text": "arr = [1, 2, 3, 4, 5]  for i in range(6): # 0 to 5 (6 elements)  print(arr[i], end=\" \")",
-      "options": [
-          "1 2 3 4 5 then crashes",
-          "123450",
-          "IndexError",
-          "SyntaxError"
-      ],
-      "answer": 2,
-      "max_points": 10,
-      "q_id": "python7"
-  },
-  {
-      "q_text": "x=0.1  if x==0.1  print(\"Equal\")  else:  print(\"Not Equal\")",
-      "options": ["Equal", "Not Equal", "TypeError", "RuntimeError"],
-      "answer": 0,
-      "max_points": 10,
-      "q_id": "python8"
-  },
-  {
-      "q_text": "x=5  print(x, x + 1, x+2) # No post-increment in Python",
-      "options": ["5 6 7", "7 6 5", "Undefined behavior", "SyntaxError"],
-      "answer": 0,
-      "max_points": 10,
-      "q_id": "python9"
-  },
-  {
-      "q_text": "if True:  pass # Python uses 'pass' for empty blocks  else:  print(\"Else block executed\")  print(\"Code continues...\")",
-      "options": ["Code continues...", "Else block executed", "IndentationError", "No output"],
-      "answer": 0,
-      "max_points": 10,
-      "q_id": "python10"
-  }
-]
+    {
+        "q_text": "Identify the Error in the Following Code\n\n```python\ndef fun():\n    x = 5  # Not static, reinitialized every call\n    x += 1\n    print(x, end=\" \")\n\nfor i in range(3):\n    fun()\n```",
+        "options": [
+            "Compilation Error",
+            "Prints 6 6 6 (no static persistence)",
+            "Prints 6 7 8",
+            "Runtime Error"
+        ],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "python1"
+    },
+    {
+        "q_text": "```python\nx = 0\nx = x - 1\nprint(x)\n```",
+        "options": [
+            "0",
+            "-1 (no underflow, normal negative numbers)",
+            "4294967295 (like C unsigned underflow)",
+            "Runtime Error"
+        ],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "python2"
+    },
+    {
+        "q_text": "What Will Be the Output?\n\n```python\nch = 'A'\nnum = ord(ch) + 1  # 'ord()' gets ASCII value\nprint(num)\n```",
+        "options": ["65", "66", "'B'", "TypeError"],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "python3"
+    },
+    {
+        "q_text": "```python\na = -2147483648  # Simulating 32-bit INT_MIN\nb = -1\nprint(a // b)  # Integer division in Python\n```",
+        "options": ["2147483648", "-2147483648", "2147483647", "OverflowError"],
+        "answer": 0,
+        "max_points": 10,
+        "q_id": "python4"
+    },
+    {
+        "q_text": "```python\ntry:\n    fp = open(\"file.txt\", \"r\")\n    buffer = fp.read(50)  # Reads first 50 bytes\n    print(buffer)\n    fp.close()\nexcept FileNotFoundError:\n    print(\"File not found!\")\n```",
+        "options": [
+            "Missing fp = open(\"file.txt\", \"r\")",
+            "Check if file exists with os.path.exists()",
+            "Use fp.readline() instead of read(50)",
+            "All of the above"
+        ],
+        "answer": 3,
+        "max_points": 10,
+        "q_id": "python5"
+    },
+    {
+        "q_text": "```python\ndef recursive_function():\n    x = 5\n    recursive_function()\n    recursive_function()\n\nrecursive_function()\n```",
+        "options": ["Infinite loop", "RecursionError (stack overflow)", "Prints 5 infinitely", "SyntaxError"],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "python6"
+    },
+    {
+        "q_text": "```python\narr = [1, 2, 3, 4, 5]\nfor i in range(6):  # 0 to 5 (6 elements)\n    print(arr[i], end=\" \")\n```",
+        "options": [
+            "1 2 3 4 5 then crashes",
+            "1 2 3 4 5 0",
+            "IndexError",
+            "SyntaxError"
+        ],
+        "answer": 2,
+        "max_points": 10,
+        "q_id": "python7"
+    },
+    {
+        "q_text": "```python\nx = 0.1\nif x == 0.1:\n    print(\"Equal\")\nelse:\n    print(\"Not Equal\")\n```",
+        "options": ["Equal", "Not Equal", "TypeError", "RuntimeError"],
+        "answer": 0,
+        "max_points": 10,
+        "q_id": "python8"
+    },
+    {
+        "q_text": "```python\nx = 5\nprint(x, x + 1, x + 2)  # No post-increment in Python\n```",
+        "options": ["5 6 7", "7 6 5", "Undefined behavior", "SyntaxError"],
+        "answer": 0,
+        "max_points": 10,
+        "q_id": "python9"
+    },
+    {
+        "q_text": "```python\nif True:\n    pass  # Python uses 'pass' for empty blocks\nelse:\n    print(\"Else block executed\")\nprint(\"Code continues...\")\n```",
+        "options": ["Code continues...", "Else block executed", "IndentationError", "No output"],
+        "answer": 0,
+        "max_points": 10,
+        "q_id": "python10"
+    }
+  ]
+  

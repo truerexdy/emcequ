@@ -1,87 +1,88 @@
 [
-  {
-      "q_text": "Java questions 1. Identify the Error in the Following Code public class Main { static void fun() { static int  x=5 // Error: Java does not allow static local variables x++; System.out.print(x+\"\"); } public static void main(String[] args) { fun(); for (int i=0  i<3; i++) } }",
-      "options": [
-          "Compilation Error - Static local variables not allowed",
-          "Logic Error - Unexpected output",
-          "No Error - Prints 6 7 8",
-          "Runtime Error"
-      ],
-      "answer": 0,
-      "max_points": 10,
-      "q_id": "java1"
-  },
-  {
-      "q_text": "public class Main { public static void main(String[] args) { int x=0  x=x-1  System.out.println(x); Options: } }",
-      "options": ["0", "-1", "Compilation Error", "Runtime Exception"],
-      "answer": 1,
-      "max_points": 10,
-      "q_id": "java2"
-  },
-  {
-      "q_text": "What Will Be the Output? public class Main { public static void main(String[] args) { char ch ='A'; int num =ch+1 System.out.println(num); Options: } }",
-      "options": ["65", "66", "'B'", "Compilation Error"],
-      "answer": 1,
-      "max_points": 10,
-      "q_id": "java3"
-  },
-  {
-      "q_text": "public class Main { public static void main(String[] args) { } } int a= Integer.MIN_VALUE; int b=-1; System.out.println(a/b);",
-      "options": ["2147483648", "-2147483648", "2147483647", "Runtime Exception (ArithmeticException)"],
-      "answer": 3,
-      "max_points": 10,
-      "q_id": "java4"
-  },
-  {
-      "q_text": "import java.io.File; import java.io.FileNotFoundException; import java.util.Scanner; public class Main { public static void main(String[] args) { Scanner scanner = null; try { scanner = new Scanner(new File(\"file.txt\")); String buffer = scanner.next(); System.out.println(buffer); } catch (FileNotFoundException e) { System.out.println(\"File not found!\"); } finally { if (scanner != null) scanner.close(); } } }",
-      "options": [
-          "scanner = new Scanner(System.in);",
-          "Check if file exists before reading",
-          "Use scanner.nextLine() instead of next()",
-          "All of the above"
-      ],
-      "answer": 3,
-      "max_points": 10,
-      "q_id": "java5"
-  },
-  {
-      "q_text": "public class Main { static void recursive Function() { int x=5; recursive Function(); } public static void main(String[] args) { recursive Function(); } }",
-      "options": ["Infinite loop", "StackOverflowError", "Prints 5 infinitely", "Compilation Error"],
-      "answer": 1,
-      "max_points": 10,
-      "q_id": "java6"
-  },
-  {
-      "q_text": "public class Main { public static void main(String[] args) { int[] arr ={1,2,3,4,5} for (int i=0  i<=5 i++) { System.out.print(arr[i] + \" \"); } } }",
-      "options": [
-          "Prints 1 2 3 4 5 then crashes",
-          "Prints 1 2 3450",
-          "ArrayIndexOutOfBoundsException",
-          "Compilation Error"
-      ],
-      "answer": 2,
-      "max_points": 10,
-      "q_id": "java7"
-  },
-  {
-      "q_text": "public class Main { public static void main(String[] args) { float x=0.1f; if (x==0.1f) { System.out.println(\"Equal\"); } else { System.out.println(\"Not Equal\"); } } } A) Equal",
-      "options": ["Equal", "Not Equal", "Compilation Error", "Runtime Exception"],
-      "answer": 1,
-      "max_points": 10,
-      "q_id": "java8"
-  },
-  {
-      "q_text": "public class Main { public static void main(String[] args) { int x=5 System.out.printf(\"%d %d %d\", x, x++, ++x); } }",
-      "options": ["5 5 7", "5 6 7", "7 6 7", "Undefined behavior"],
-      "answer": 3,
-      "max_points": 10,
-      "q_id": "java9"
-  },
-  {
-      "q_text": "public class Main { public static void main(String[] args) { if (true)  ; else System.out.println(\"Else block executed\"); System.out.println(\"Code continues...\"); } }",
-      "options": ["Code continues...", "Else block executed", "Compilation Error", "No Output"],
-      "answer": 0,
-      "max_points": 10,
-      "q_id": "java10"
-  }
-]
+    {
+        "q_text": "Identify the Error in the Following Code\n\n```java\npublic class Main {\n    static void fun() {\n        static int x = 5; // Error: Java does not allow static local variables\n        x++;\n        System.out.print(x + \"\");\n    }\n    public static void main(String[] args) {\n        fun();\n        for (int i = 0; i < 3; i++);\n    }\n}\n```",
+        "options": [
+            "Compilation Error - Static local variables not allowed",
+            "Logic Error - Unexpected output",
+            "No Error - Prints 6 7 8",
+            "Runtime Error"
+        ],
+        "answer": 0,
+        "max_points": 10,
+        "q_id": "java1"
+    },
+    {
+        "q_text": "```java\npublic class Main {\n    public static void main(String[] args) {\n        int x = 0;\n        x = x - 1;\n        System.out.println(x);\n    }\n}\n```",
+        "options": ["0", "-1", "Compilation Error", "Runtime Exception"],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "java2"
+    },
+    {
+        "q_text": "What Will Be the Output?\n\n```java\npublic class Main {\n    public static void main(String[] args) {\n        char ch = 'A';\n        int num = ch + 1;\n        System.out.println(num);\n    }\n}\n```",
+        "options": ["65", "66", "'B'", "Compilation Error"],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "java3"
+    },
+    {
+        "q_text": "```java\npublic class Main {\n    public static void main(String[] args) {\n        int a = Integer.MIN_VALUE;\n        int b = -1;\n        System.out.println(a / b);\n    }\n}\n```",
+        "options": ["2147483648", "-2147483648", "2147483647", "Runtime Exception (ArithmeticException)"],
+        "answer": 3,
+        "max_points": 10,
+        "q_id": "java4"
+    },
+    {
+        "q_text": "```java\nimport java.io.File;\nimport java.io.FileNotFoundException;\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = null;\n        try {\n            scanner = new Scanner(new File(\"file.txt\"));\n            String buffer = scanner.next();\n            System.out.println(buffer);\n        } catch (FileNotFoundException e) {\n            System.out.println(\"File not found!\");\n        } finally {\n            if (scanner != null) scanner.close();\n        }\n    }\n}\n```",
+        "options": [
+            "scanner = new Scanner(System.in);",
+            "Check if file exists before reading",
+            "Use scanner.nextLine() instead of next()",
+            "All of the above"
+        ],
+        "answer": 3,
+        "max_points": 10,
+        "q_id": "java5"
+    },
+    {
+        "q_text": "```java\npublic class Main {\n    static void recursiveFunction() {\n        int x = 5;\n        recursiveFunction();\n    }\n    public static void main(String[] args) {\n        recursiveFunction();\n    }\n}\n```",
+        "options": ["Infinite loop", "StackOverflowError", "Prints 5 infinitely", "Compilation Error"],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "java6"
+    },
+    {
+        "q_text": "```java\npublic class Main {\n    public static void main(String[] args) {\n        int[] arr = {1, 2, 3, 4, 5};\n        for (int i = 0; i <= 5; i++) {\n            System.out.print(arr[i] + \" \");\n        }\n    }\n}\n```",
+        "options": [
+            "Prints 1 2 3 4 5 then crashes",
+            "Prints 1 2 3 4 5 0",
+            "ArrayIndexOutOfBoundsException",
+            "Compilation Error"
+        ],
+        "answer": 2,
+        "max_points": 10,
+        "q_id": "java7"
+    },
+    {
+        "q_text": "```java\npublic class Main {\n    public static void main(String[] args) {\n        float x = 0.1f;\n        if (x == 0.1f) {\n            System.out.println(\"Equal\");\n        } else {\n            System.out.println(\"Not Equal\");\n        }\n    }\n}\n```",
+        "options": ["Equal", "Not Equal", "Compilation Error", "Runtime Exception"],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "java8"
+    },
+    {
+        "q_text": "```java\npublic class Main {\n    public static void main(String[] args) {\n        int x = 5;\n        System.out.printf(\"%d %d %d\", x, x++, ++x);\n    }\n}\n```",
+        "options": ["5 5 7", "5 6 7", "7 6 7", "Undefined behavior"],
+        "answer": 3,
+        "max_points": 10,
+        "q_id": "java9"
+    },
+    {
+        "q_text": "```java\npublic class Main {\n    public static void main(String[] args) {\n        if (true)\n            ;\n        else\n            System.out.println(\"Else block executed\");\n        System.out.println(\"Code continues...\");\n    }\n}\n```",
+        "options": ["Code continues...", "Else block executed", "Compilation Error", "No Output"],
+        "answer": 0,
+        "max_points": 10,
+        "q_id": "java10"
+    }
+  ]
+  

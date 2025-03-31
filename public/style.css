@@ -7,6 +7,7 @@ body{
     font-family: "Jet";
     height: 97vh;
     width: 98vw;
+    overflow: auto;
 }
 
 :root{
@@ -68,6 +69,7 @@ a{
 }
 
 #questionPage{
+    overflow: auto;
     width: 100%;
     height: 95%;
     color: var(--sec);
