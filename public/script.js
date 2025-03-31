@@ -1,4 +1,4 @@
-const maxQuestion = 2;
+const maxQuestion = 10;
 let questionNumber = 0;
 const maxTime = 600;
 let questionListObject;
