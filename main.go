@@ -108,7 +108,7 @@ func ScoreHandler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("ScoreHandler called with method: %s", r.Method)
 
 	if r.Method == http.MethodPost {
-		// Handle POST request for updating scores
+
 		var data ScoreObject
 		decoder := json.NewDecoder(r.Body)
 		err := decoder.Decode(&data)
@@ -120,7 +120,6 @@ func ScoreHandler(w http.ResponseWriter, r *http.Request) {
 
 		log.Printf("Received POST data - TeamID: %d, TotalScore: %d", data.TeamID, data.TotalScore)
 
-		// Execute the update with proper parameter order
 		result, err := db.Exec("UPDATE teams SET total_score = ? WHERE team_id = ?", data.TotalScore, data.TeamID)
 		if err != nil {
 			log.Printf("Error updating the db: %v", err)
@@ -128,7 +127,6 @@ func ScoreHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		// Check if any rows were affected
 		rowsAffected, err := result.RowsAffected()
 		if err != nil {
 			log.Printf("Error getting rows affected: %v", err)
@@ -141,7 +139,6 @@ func ScoreHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		// Respond with success
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(map[string]interface{}{
@@ -150,9 +147,7 @@ func ScoreHandler(w http.ResponseWriter, r *http.Request) {
 		})
 
 	} else if r.Method == http.MethodGet {
-		// Handle GET request for creating a new team
 
-		// Insert a new team with total_score = 0
 		result, err := db.Exec("INSERT INTO teams (total_score) VALUES (0)")
 		if err != nil {
 			log.Printf("Error inserting new team: %v", err)
@@ -169,17 +164,14 @@ func ScoreHandler(w http.ResponseWriter, r *http.Request) {
 
 		log.Printf("New team created with ID: %d", id)
 
-		// Create the response object
 		responseData := ScoreObject{
 			TeamID:     id,
 			TotalScore: 0,
 		}
 
-		// Log the response data we're sending
 		responseBytes, _ := json.Marshal(responseData)
 		log.Printf("Sending response: %s", string(responseBytes))
 
-		// Set headers and write response
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 

@@ -10,7 +10,7 @@ let selectedOptionForQuestions = Array(maxQuestion).fill(null);
 const rootElement = document.getElementById("root");
 const contentElement = document.getElementById("content");
 
-// Define available languages once at the top
+
 const availableLanguages = [
     { code: "py", name: "C++" },
     { code: "py", name: "Python" },
@@ -18,7 +18,7 @@ const availableLanguages = [
     { code: "c", name: "C" }
 ];
 
-// Display the score card with results
+
 async function scoreCard() {
     contentElement.innerHTML = "";
     contentElement.id = "scoreCardPage";
@@ -45,12 +45,8 @@ async function scoreCard() {
         }
 
         maxPossiblePoints += question.max_points;
-    }
-
-    console.log(`Total Score = ${totalPoints}`);
-    console.log(`Total Correct answers = ${totalCorrect}`);
+    }   
     
-    // Send the score to the backend
     try {
         const response = await fetch('/score', {
             method: 'POST',
@@ -76,11 +72,10 @@ async function scoreCard() {
     summary.className = "score-summary";
     summary.innerHTML = `
         <h2>Test Completed</h2>
-        <p>Your score has been recorded: ${totalPoints} points out of ${maxPossiblePoints}</p>
-        <p>You answered ${totalCorrect} out of ${maxQuestion} questions correctly.</p>
         <p>Team ID: ${teamId}</p>
         <p>Contact your co-ordinator to record your result.</p>
         <p>Hands off the keyboard and mouse.</p>
+        <h2>Do NOT reload the page! If you don't wish to be disqualified.</h2>
     `;
 
     const restartButton = document.createElement("button");
@@ -92,7 +87,7 @@ async function scoreCard() {
     contentElement.appendChild(restartButton);
 }
 
-// Helper function to get language name from code
+
 function getLanguageName(langCode) {
     const languages = {
         "cpp": "C++",
@@ -102,13 +97,13 @@ function getLanguageName(langCode) {
     return languages[langCode] || langCode;
 }
 
-// Handle time up scenario
+
 function timeUp() {
     alert("Time's up! Your answers will be submitted now.");
     scoreCard();
 }
 
-// Timer function
+
 async function clock() {
     const timerElement = document.getElementById("timer");
     let minutes = Math.floor(maxTime/60);
@@ -130,7 +125,7 @@ async function clock() {
     }
 }
 
-// Load a specific question
+
 function loadQuestion(number) {
     if (!questionListObject || questionListObject.length === 0 || number > questionListObject.length) {
         return;
@@ -140,7 +135,7 @@ function loadQuestion(number) {
     const questionTextElement = document.getElementById("questionText");
     questionTextElement.innerText = question.q_text;
 
-    // Set options
+    
     for (let i = 0; i < 4; i++) {
         const optionElement = document.getElementById(`option${i}`);
         if (i < question.options.length) {
@@ -151,24 +146,24 @@ function loadQuestion(number) {
         }
     }
 
-    // Highlight previously selected option if any
+    
     const savedOption = selectedOptionForQuestions[number - 1];
     if (savedOption !== null) {
         selectOption(savedOption);
     } else {
-        // Reset selection
+        
         const previousSelected = document.querySelector(".selectedOption");
         if (previousSelected) {
             previousSelected.className = "options";
         }
         selectedOption = null;
     }
-    // Reset save button appearance
+    
     const saveButtonElement = document.getElementById("saveButtonID");
     saveButtonElement.className = "saveButton";
 }
 
-// Go to previous question
+
 function loadPreviousQuestion() {
     const saveButtonElement = document.getElementById("saveButtonID");
     saveButtonElement.className = "saveButton";
@@ -194,13 +189,13 @@ function loadPreviousQuestion() {
     loadQuestion(questionNumber);
 }
 
-// Submit all answers
+
 function submitAnswers() {
     saveOption(questionNumber);
     scoreCard();
 }
 
-// Go to next question
+
 function loadNextQuestion() {
     const saveButtonElement = document.getElementById("saveButtonID");
     saveButtonElement.className = "saveButton";
@@ -228,9 +223,9 @@ function loadNextQuestion() {
     loadQuestion(questionNumber);
 }
 
-// Select an option
+
 function selectOption(ind) {
-    // Clear previous selection
+    
     const previousSelected = document.querySelector(".selectedOption");
     if (previousSelected) {
         previousSelected.className = "options";
@@ -238,7 +233,7 @@ function selectOption(ind) {
 
     selectedOption = ind;
 
-    // Highlight new selection
+    
     const currentElement = document.getElementById(`option${selectedOption}`);
     if (currentElement) {
         currentElement.className = "selectedOption";
@@ -248,40 +243,40 @@ function selectOption(ind) {
     saveButtonElement.className = "saveButton";
 }
 
-// Save the selected option for the current question
+
 function saveOption(num) {
     if (selectedOption !== null) {
         selectedOptionForQuestions[num-1] = selectedOption;
-        // Only change the button appearance after actually saving an option
+        
         const saveButtonElement = document.getElementById("saveButtonID");
         saveButtonElement.className = "savedButton";
     }
 }
 
-// Change language and reload questions
+
 async function changeLanguage(event) {
     currentLanguage = event.target.value;
 
-    // Reset the quiz state
+    
     questionNumber = 0;
     selectedOptionForQuestions = Array(maxQuestion).fill(null);
 
-    // Load questions in the new language
+    
     await loadQuestionData();
 
-    // Start from question 1
+    
     questionNumber = 1;
 
-    // Update the question number display
+    
     const questionNumberElement = document.getElementById("questionNumber");
     if (questionNumberElement) {
         questionNumberElement.innerText = "1";
     }
 
-    // Load the first question
+    
     loadQuestion(1);
 
-    // Reset the next button if it was in "Submit" state
+    
     const nextButtonElement = document.getElementById("nextButton");
     if (nextButtonElement && nextButtonElement.innerText === "Submit") {
         nextButtonElement.innerText = "Next Question";
@@ -303,7 +298,7 @@ async function loadQuestionData() {
     }
 }
 
-// Load question UI
+
 async function getTeamId() {
     try {
         console.log("Requesting team ID from server...");
@@ -331,14 +326,14 @@ async function getTeamId() {
         
         console.log("Parsed response data:", data);
         
-        // Check response structure and extract TeamID
+        
         if (data && typeof data === 'object') {
             if ('TeamID' in data) {
                 teamId = data.TeamID;
                 console.log(`Team ID assigned: ${teamId}`);
                 return teamId;
             } else {
-                // Try lowercase property name as fallback (in case of JSON serialization differences)
+                
                 if ('teamID' in data) {
                     teamId = data.teamID;
                     console.log(`Team ID assigned (from teamID): ${teamId}`);
@@ -363,40 +358,40 @@ async function getTeamId() {
     }
 }
 
-// Modify the loadQuestionUI function to get the team ID and display it
+
 async function loadQuestionUI() {
-    // Reset question number
+    
     questionNumber = 0;
 
-    // Get the team ID first
+    
     try {
         await getTeamId();
         if (!teamId) {
             console.error("Failed to get a valid team ID");
-            // Create a fallback ID for testing if needed
+            
             teamId = Math.floor(Math.random() * 10000) + 1;
             console.log(`Created fallback team ID: ${teamId}`);
         }
     } catch (error) {
         console.error("Error in team ID initialization:", error);
-        // Create a fallback ID for testing if needed
+        
         teamId = Math.floor(Math.random() * 10000) + 1;
         console.log(`Created fallback team ID after error: ${teamId}`);
     }
 
-    // Load questions from API
+    
     await loadQuestionData();
 
-    // Clear content
+    
     contentElement.innerHTML = "";
     contentElement.id = "questionPage";
     
-    // Create top bar with navigation and timer
+    
     const topBarElement = document.createElement("div");
     const previousButtonElement = document.createElement("button");
     const questionNumberElement = document.createElement("p");
     const timerElement = document.createElement("p");
-    const teamIdElement = document.createElement("p"); // Element for team ID
+    const teamIdElement = document.createElement("p"); 
     const nextButtonElement = document.createElement("button");
 
     topBarElement.id = "topBar";
@@ -408,37 +403,37 @@ async function loadQuestionUI() {
 
     previousButtonElement.innerText = "Previous Question";
     nextButtonElement.innerText = "Next Question";
-    questionNumberElement.innerText = "1"; // Start with question 1
-    teamIdElement.innerText = `Team ID: ${teamId}`; // Display the team ID
+    questionNumberElement.innerText = "1"; 
+    teamIdElement.innerText = `Team ID: ${teamId}`; 
 
     contentElement.appendChild(topBarElement);
     topBarElement.appendChild(previousButtonElement);
     topBarElement.appendChild(questionNumberElement);
     topBarElement.appendChild(timerElement);
-    topBarElement.appendChild(teamIdElement); // Add team ID display
+    topBarElement.appendChild(teamIdElement); 
     topBarElement.appendChild(nextButtonElement);
 
     previousButtonElement.addEventListener("click", loadPreviousQuestion);
     nextButtonElement.addEventListener("click", loadNextQuestion);
 
-    // Create question text element
+    
     const questionTextElement = document.createElement("p");
     questionTextElement.id = "questionText";
     contentElement.appendChild(questionTextElement);
 
-    // Create options container
+    
     const optionsContainer = document.createElement("div");
     optionsContainer.id = "optionsContainer";
     contentElement.appendChild(optionsContainer);
 
-    // Create option buttons
+    
     for (let i = 0; i < 4; i++) {
         let option = document.createElement("button");
         option.className = "options";
         option.type = "button";
         option.id = `option${i}`;
 
-        // Use an anonymous function that captures the value of i
+        
         option.addEventListener("click", () => {
             selectOption(i);
         });
@@ -446,7 +441,7 @@ async function loadQuestionUI() {
         optionsContainer.appendChild(option);
     }
 
-    // Create save button
+    
     let saveButtonElement = document.createElement("button");
     saveButtonElement.id = "saveButtonID";
     saveButtonElement.className = "saveButton";
@@ -457,10 +452,10 @@ async function loadQuestionUI() {
     });
     contentElement.appendChild(saveButtonElement);
 
-    // Start the timer
+    
     clock();
 
-    // Load first question and increment questionNumber
+    
     questionNumber = 1;
     loadQuestion(1);
 }
@@ -473,7 +468,7 @@ function startPage() {
     contentElement.innerHTML = "";
     contentElement.id = "startPage";
 
-    // Create language selector for start page
+    
     const languageSelectorContainer = document.createElement("div");
     languageSelectorContainer.id = "startLanguageSelectorContainer";
 
@@ -510,5 +505,5 @@ function startPage() {
     contentElement.appendChild(startButtonElement);
 }
 
-// Initialize the application
+
 startPage();
