@@ -115,13 +115,13 @@ a{
 #questionText{
     width: 100%;
     padding: 1%;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .options{
     font-family: "Jet";
     padding: 1%;
-    font-size: 1.5em;
+    font-size: 1em;
     border: none;
 }
 

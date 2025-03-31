@@ -1,4 +1,4 @@
-const maxQuestion = 10;
+const maxQuestion = 2;
 let questionNumber = 0;
 const maxTime = 600;
 let questionListObject;
@@ -45,22 +45,6 @@ function scoreCard() {
         }
 
         maxPossiblePoints += question.max_points;
-
-        const questionResult = document.createElement("div");
-        questionResult.className = `question-result ${isCorrect ? 'correct' : 'incorrect'}`;
-
-        const questionText = document.createElement("p");
-        questionText.className = "result-question";
-        questionText.innerText = `Q${i+1}: ${question.q_text}`;
-
-        const answerText = document.createElement("p");
-        answerText.className = "result-answer";
-        answerText.innerHTML = `Your answer: ${userAnswer !== null ? question.options[userAnswer] : 'Not answered'}<br>
-                               Correct answer: ${question.options[question.answer]}`;
-
-        questionResult.appendChild(questionText);
-        questionResult.appendChild(answerText);
-        resultsContainer.appendChild(questionResult);
     }
 
     const summary = document.createElement("div");
@@ -79,7 +63,6 @@ function scoreCard() {
     restartButton.addEventListener("click", startPage);
 
     contentElement.appendChild(summary);
-    contentElement.appendChild(resultsContainer);
     contentElement.appendChild(restartButton);
 }
 
