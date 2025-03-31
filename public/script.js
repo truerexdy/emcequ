@@ -77,14 +77,7 @@ async function scoreCard() {
         <p>Hands off the keyboard and mouse.</p>
         <h2>Do NOT reload the page! If you don't wish to be disqualified.</h2>
     `;
-
-    const restartButton = document.createElement("button");
-    restartButton.className = "button";
-    restartButton.innerText = "Restart Quiz";
-    restartButton.addEventListener("click", startPage);
-
     contentElement.appendChild(summary);
-    contentElement.appendChild(restartButton);
 }
 
 
