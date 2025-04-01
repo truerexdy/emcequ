@@ -1,0 +1,92 @@
+[
+    {
+        "q_text": "A] Identify the error in the following code\n\n```c\n#include <stdio.h>\nvoid fun() {\n    static int x = 5;\n    x++;\n    printf(\"%d \", x);\n}\n\nint main() {\n    for (int i = 0; i < 3; i++)\n        fun();\n    return 0;\n}\n```",
+        "options": [
+            "Compilation Error - Undefined behaviour",
+            "Logic Error - Unexpected output",
+            "No Error - Correct output",
+            "Run-time Error - Memory corruption"
+        ],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "c1"
+    },
+    {
+        "q_text": "```c\n#include <stdio.h>\nint main() {\n    unsigned int x = 0;\n    x = x - 1;\n    printf(\"%u\\n\", x);\n    return 0;\n}\n```",
+        "options": [
+            "No Error - Output will be 0",
+            "Logic Error - Unexpected large value due to underflow",
+            "Compilation Error - Cannot subtract from unsigned integer",
+            "Runtime Error - Causes undefined behaviour"
+        ],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "c2"
+    },
+    {
+        "q_text": "B] What will be the output of the following code?\n\n```c\n#include <stdio.h>\nint main() {\n    char ch = 'A';\n    int num = ch + 1;\n    printf(\"%d\", num);\n    return 0;\n}\n```",
+        "options": ["65", "66", "'B'", "Compilation Error"],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "c3"
+    },
+    {
+        "q_text": "```c\n#include <stdio.h>\nint main() {\n    int a = -2147483648;\n    int b = -1;\n    printf(\"%d\", a / b);\n    return 0;\n}\n```",
+        "options": ["2147483648", "-2147483648", "2147483647", "Compilation Error"],
+        "answer": 0,
+        "max_points": 10,
+        "q_id": "c4"
+    },
+    {
+        "q_text": "Debug the segmentation fault in this file-handling code:\n\n```c\n#include <stdio.h>\nint main() {\n    FILE *fp;\n    char buffer[50];\n    fscanf(fp, \"%s\", buffer);\n    printf(\"%s\", buffer);\n    fclose(fp);\n    return 0;\n}\n```",
+        "options": [
+            "fp = fopen(\"file.txt\", \"r\");",
+            "Check if fp == NULL before reading.",
+            "Use fgets(buffer, 50, fp) instead of fscanf.",
+            "All of the above"
+        ],
+        "answer": 3,
+        "max_points": 10,
+        "q_id": "c5"
+    },
+    {
+        "q_text": "What will happen if you run the following program?\n\n```c\n#include <stdio.h>\nvoid recursiveFunction() {\n    int x = 5;\n    recursiveFunction();\n}\n\nint main() {\n    recursiveFunction();\n    return 0;\n}\n```",
+        "options": ["Infinite loop", "Segmentation fault", "Prints 5 infinitely", "Compilation error"],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "c6"
+    },
+    {
+        "q_text": "What will happen when you run the following code?\n\n```c\n#include <stdio.h>\nint main() {\n    int arr[5] = {1, 2, 3, 4, 5};\n    for (int i = 0; i <= 5; i++) {\n        printf(\"%d \", arr[i]);\n    }\n    return 0;\n}\n```",
+        "options": [
+            "It prints 1 2 3 4 5 and then crashes.",
+            "It prints 1 2 3 4 5 0 without errors.",
+            "It runs indefinitely and causes an infinite loop.",
+            "It will give a compilation error due to an array index out of bounds."
+        ],
+        "answer": 0,
+        "max_points": 10,
+        "q_id": "c7"
+    },
+    {
+        "q_text": "What will be the output of the following code?\n\n```c\n#include <stdio.h>\nint main() {\n    float x = 0.1;\n    if (x == 0.1)\n        printf(\"Equal\");\n    else\n        printf(\"Not Equal\");\n    return 0;\n}\n```",
+        "options": ["Equal", "Not Equal", "Compilation error", "Undefined behaviour"],
+        "answer": 1,
+        "max_points": 10,
+        "q_id": "c8"
+    },
+    {
+        "q_text": "Guess the output of the following code\n\n```c\n#include <stdio.h>\nint main() {\n    int x = 5;\n    printf(\"%d %d %d\", x, x++, ++x);\n    return 0;\n}\n```",
+        "options": ["5 5 7", "5 6 7", "7 6 7", "Undefined behaviour"],
+        "answer": 3,
+        "max_points": 10,
+        "q_id": "c9"
+    },
+    {
+        "q_text": "What will be the output of the following code?\n\n```c\n#include <stdio.h>\nint main() {\n    if (1)\n        ;\n    else\n        printf(\"Else block executed\\n\");\n    printf(\"Code continues...\\n\");\n    return 0;\n}\n```",
+        "options": ["Code continues...", "Else block executed", "Compilation error", "No output"],
+        "answer": 0,
+        "max_points": 10,
+        "q_id": "c10"
+    }
+]
