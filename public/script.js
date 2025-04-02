@@ -73,6 +73,7 @@ async function scoreCard() {
     summary.innerHTML = `
         <h2>Test Completed</h2>
         <p>Team ID: ${teamId}</p>
+        <p>Points: ${totalPoints}</p>
         <p>Contact your co-ordinator to record your result.</p>
         <p>Hands off the keyboard and mouse.</p>
         <h2>Do NOT reload the page! If you don't wish to be disqualified.</h2>
